@@ -1,0 +1,81 @@
+﻿<Window x:Class="PersonalFinance.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonalFinance.App"
+        mc:Ignorable="d"
+        Title="Personal Finance" Height="450" Width="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="650"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
+            <!--<Menu.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF082E4E" Offset="1"/>
+                    <GradientStop Color="#FF13314B" Offset="0"/>
+                    <GradientStop Color="#FF4585BD" Offset="0.496"/>
+                </LinearGradientBrush>
+            </Menu.Background>-->
+            <MenuItem Header="_Dashboard">
+            </MenuItem>
+            <MenuItem Header="_Budget">
+                <MenuItem Header="Current">
+                </MenuItem>
+                <MenuItem Header="Add">
+                </MenuItem>
+                <MenuItem Header="Manage">
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Expenses">
+                <MenuItem Header="Show list" />
+                <MenuItem Header="Add" />
+                <MenuItem Header="Manage" />
+            </MenuItem>
+            <MenuItem Header="_Revenue">
+                <MenuItem Header="Show list" />
+                <MenuItem Header="Add" />
+                <MenuItem Header="Manage" />
+            </MenuItem>
+            <MenuItem Header="_Reports">
+            </MenuItem>
+            <MenuItem Header="_Bills">
+                <MenuItem Header="Show list" />
+                <MenuItem Header="Add" />
+                <MenuItem Header="Manage" />
+            </MenuItem>
+            <MenuItem Header="_About">
+            </MenuItem>
+        </Menu>
+        <TreeView Grid.Row="1" x:Name="mainMenuBar" Width="auto">
+        </TreeView>
+
+        <Grid Grid.Row="1" Grid.Column="0" Background="#0F4C81">
+            <Image Source="Resources/img/icons8-wallet-100.png" Margin="6,8,6,8"/>
+        </Grid>
+
+        <Grid x:Name="menuGrid" Grid.Row="1" Grid.Column="1" Background="#0F4C81">
+
+            <TextBlock Grid.Row="1"
+                       Grid.Column="1" Margin="0,0,0,0" FontSize="28" Foreground="Azure"><Run Text="Personal Finance"/></TextBlock>
+            <TextBlock Grid.Row="0" Margin="0,40,0,0" Foreground="Azure">
+                <Span> Manage your finances</Span>
+            </TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="2" Background="#0F4C81">
+        </Grid>
+
+    </Grid>
+</Window>
