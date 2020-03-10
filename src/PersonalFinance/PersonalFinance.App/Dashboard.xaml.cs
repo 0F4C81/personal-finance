@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,19 +14,13 @@ using System.Windows.Shapes;
 namespace PersonalFinance.App
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Dashboard.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Dashboard : Page
     {
-        public MainWindow()
+        public Dashboard()
         {
             InitializeComponent();
-            MainFrame.Content = new Dashboard();
-        }
-
-        private void MenuBudget_Click(object sender, RoutedEventArgs routedEventArgs)
-        {
-            MainFrame.Content = new Budget();
         }
     }
 }

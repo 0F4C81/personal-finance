@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PersonalFinance.App"
         mc:Ignorable="d"
-        Title="Personal Finance" Height="450" Width="800">
+        Title="Personal Finance" Height="1024" MinWidth="1280" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen" Icon="\Resources\img\icons8-wallet-100.ico"  Background="White" WindowState="Maximized" >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -15,9 +15,9 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="650"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
@@ -30,8 +30,8 @@
             </Menu.Background>-->
             <MenuItem Header="_Dashboard">
             </MenuItem>
-            <MenuItem Header="_Budget">
-                <MenuItem Header="Current">
+            <MenuItem Header="_Budget" >
+                <MenuItem Header="Current" Click="MenuBudget_Click">
                 </MenuItem>
                 <MenuItem Header="Add">
                 </MenuItem>
@@ -71,10 +71,16 @@
                        Grid.Column="1" Margin="0,0,0,0" FontSize="28" Foreground="Azure"><Run Text="Personal Finance"/></TextBlock>
             <TextBlock Grid.Row="0" Margin="0,40,0,0" Foreground="Azure">
                 <Span> Manage your finances</Span>
-            </TextBlock>
+            </TextBlock> 
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="2" Background="#0F4C81">
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden">
+                
+            </Frame>
         </Grid>
 
     </Grid>

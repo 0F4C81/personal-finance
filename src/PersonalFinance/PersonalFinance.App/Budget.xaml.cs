@@ -1,8 +1,8 @@
-﻿using System;
+﻿using PersonalFinance.App.Data;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Data;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,19 +16,19 @@ using System.Windows.Shapes;
 namespace PersonalFinance.App
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Budget.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Budget : Page
     {
-        public MainWindow()
+        public Budget()
         {
             InitializeComponent();
-            MainFrame.Content = new Dashboard();
-        }
 
-        private void MenuBudget_Click(object sender, RoutedEventArgs routedEventArgs)
-        {
-            MainFrame.Content = new Budget();
+            DataAccess.GetSqlConnection();
+            string query = "SELECT * FROM Budgets";
+            DataTable data = DataAccess.Get_DataTable(query);
+            budgetTable.ItemsSource = data.DefaultView;
         }
+       
     }
 }
