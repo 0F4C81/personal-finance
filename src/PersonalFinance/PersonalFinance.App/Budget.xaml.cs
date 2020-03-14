@@ -24,11 +24,12 @@ namespace PersonalFinance.App
         {
             InitializeComponent();
 
-            DataAccess.GetSqlConnection();
+            var connection = DataAccess.GetSqlConnection();
+            var commandType = CommandType.Text;
             string query = "SELECT * FROM Budgets";
-            DataTable data = DataAccess.Get_DataTable(query);
+            var data = DataAccess.ExecuteSelectCommand(connection, commandType, query);
+
             budgetTable.ItemsSource = data.DefaultView;
         }
-       
     }
 }

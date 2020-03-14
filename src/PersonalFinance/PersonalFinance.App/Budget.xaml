@@ -9,8 +9,31 @@
       Title="Budget">
 
     <Grid>
-        <TextBlock Grid.Row="1" Grid.Column="0" FontSize="24" Margin="0,5,0,6">Budget</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="38*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="0" FontSize="24" Margin="0,19,0,6" HorizontalAlignment="Left" Width="134" Grid.RowSpan="2">Budget</TextBlock>
+        <Button Grid.Column="0" Content="Add" Name="AddBudgetButton" Margin="-4,65,0,134" HorizontalAlignment="Left" Width="66" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="2.987"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="1.148"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
 
-        <DataGrid Grid.Row="2" Name="budgetTable" Margin="10,0,12,0" Width="780" IsReadOnly="True" AlternatingRowBackground="Gainsboro"  AlternationCount="2"></DataGrid>
+        <DataGrid Grid.Column="0" Name="budgetTable" Margin="134,40,150,36" IsReadOnly="True" AlternatingRowBackground="Gainsboro"  AlternationCount="2" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.081"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.399"/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+        </DataGrid>
     </Grid>
 </Page>

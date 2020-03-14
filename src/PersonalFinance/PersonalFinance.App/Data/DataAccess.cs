@@ -13,29 +13,80 @@ namespace PersonalFinance.App.Data
         public static SqlConnection GetSqlConnection()
         {
             string connectionString = Settings.Default.connection_String;
-            SqlConnection cs = new SqlConnection(connectionString);
-            if (cs.State != ConnectionState.Open) cs.Open();
+            SqlConnection connection = new SqlConnection(connectionString);
+            if (connection.State != ConnectionState.Open)
+            {
+                connection.Open();
+            }
 
-            return cs;
+            return connection;
         }
 
-        public static DataTable Get_DataTable(string query)
+        public static DataTable ExecuteSelectCommand(SqlConnection connection, CommandType commandType, string query)
         {
-            SqlConnection connection = GetSqlConnection();
-
             DataTable table = new DataTable();
-            SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-            adapter.Fill(table);
 
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+
+            SqlCommand command = connection.CreateCommand();
+            command.CommandType = commandType;
+            command.CommandText = query;
+            try
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                using (adapter = new SqlDataAdapter(command))
+                {
+                    adapter.Fill(table);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                command.Dispose();
+                connection.Close();
+            }
             return table;
         }
 
-        public static void Execute_Query(string query)
+        public static DataTable ExecuteSelectCommandWithParameters(SqlConnection connection, CommandType commandType, string query, SqlParameter[] parameters)
         {
-            SqlConnection connection = GetSqlConnection();
+            SqlCommand command = new SqlCommand();
+            DataTable table = new DataTable();
 
-            SqlCommand command = new SqlCommand(query, connection);
-            command.ExecuteNonQuery();
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+
+            command = connection.CreateCommand();
+            command.CommandType = commandType;
+            command.CommandText = query;
+
+            command.Parameters.AddRange(parameters);
+            try
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                using (adapter = new SqlDataAdapter(command))
+                {
+                    adapter.Fill(table);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Dispose();
+                connection.Close();
+            }
+            return table;
         }
 
         public static void Close_SqlConnection()
